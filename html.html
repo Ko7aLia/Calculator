@@ -1,0 +1,274 @@
+<!--DOCTYPE html-->
+<html lang="ru">
+<head>
+<title>Калькулятор</title>
+<!--<link rel="preload"    href="Fonts/LomoWebPixelLTStd-4.woff" as="font" type="woff" crossorigin> помогает браузеру предварительно загрузить шрифт, чтобы он сразу применялся, без стандартного-->
+
+<link rel="stylesheet" href="CSS.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+   
+
+        <form class="value"> <!--display-->
+
+            <textarea type="text"                  id="Input"  placeholder ="0" disabled></textarea> <!-- если внутри тегов textarea сделать пробел, то будет игнорироваться placeholder-->
+            <input    type="text"                  id="Input2" placeholder ="+" disabled>
+            <textarea type="text"                  id="Input3" placeholder ="0" disabled></textarea>
+            <input    type="button" class="result"             value       ="=">
+            <textarea type="text"                  id="Input4" placeholder ="0" disabled></textarea>
+
+        <!--display decor-->   
+
+            <div class="pixel pixel_1"> </div>
+            <div class="pixel pixel_2"> </div>
+            <div class="pixel pixel_3"> </div>
+            <div class="pixel pixel_4"> </div>
+            <div class="pixel pixel_5"> </div>
+            <div class="pixel pixel_6"> </div>
+            <div class="pixel pixel_7"> </div>
+            <div class="pixel pixel_8"> </div>
+
+        </form>
+
+    <section> <!--the humbers on the leaves-->
+
+        <div class="image_pos_anim image1_of_button">
+
+            <input type="button" class=" number number1" value="1"> 
+
+            <img src="listnum1.png" style=" height: 10vh; width: 4.6vw;">
+
+        </div>
+
+        <div class="image_pos_anim image2_of_button">
+
+            <input type="button" class=" number number2" value="2">
+
+            <img src="listnum2.png" style=" height: 12.5vh; width: 5.7vw;">
+
+        </div>
+        
+        <div class="image_pos_anim image3_of_button">
+
+            <input type="button" class=" number number3" value="3">
+
+            <img src="listnum1.png" style=" height: 12.8vh; width: 5.8vw;">
+
+        </div>
+        
+        <div class="image_pos_anim image4_of_button">
+
+            <input type="button" class=" number number4" value="4">
+
+            <img src="list321.png" style=" height: 12vh; width: 5.5vw;">
+
+        </div>
+
+        <div class="image_pos_anim image5_of_button">
+
+            <input type="button" class=" number number5" value="5">
+
+            <img src="listnum1.png" style=" height: 18vh; width: 7.8vw;">
+
+        </div>
+
+        <div class="image_pos_anim image6_of_button">
+
+            <input type="button" class=" number number6" value="6">
+
+            <img src="listnum1.png" style=" height: 12vh; width: 5.5vw;">
+
+        </div>
+
+        <div class="image_pos_anim image7_of_button">
+
+            <input type="button" class=" number number7" value="7">
+            
+            <img src="listnum1.png" style=" height: 10vh; width: 4.6vw;">
+
+        </div>
+        
+        <div class="image_pos_anim image8_of_button">
+
+            <input type="button" class=" number number8" value="8">
+
+            <img src="listwow.png" style=" height: 14.5vh; width: 6.5vw;">
+
+        </div>
+        
+        <div class="image_pos_anim image9_of_button">
+
+            <input type="button" class=" number number9" value="9">
+
+            <img src="listnum2.png" style=" height: 12vh; width: 5.5vw;">
+
+        </div>
+
+        <div class="image0_of_button">
+
+            <input type="button" class=" number number0" value="0">
+
+            <img src="hole.png" style=" height: 15vh; width: 5.5vw;">
+
+        </div>
+
+    </section>
+
+
+    <section> <!-- operators -->
+
+            <div> <!-- cloud [- +]-->
+
+                <input type="button" class=" minus     act operator "             value="-" >
+                <input type="button" class=" plus      act operator "             value="+" >
+                            
+                            
+                <input type="button" class=" clear     act          " id="clear"  value="C" >
+                            
+            </div>      
+
+            <div> <!-- cloud [: *]-->
+                <input type="button" class=" divide    act operator "             value=":" >
+                <input type="button" class=" multiply  act operator "             value="*" >
+
+                <input type="button" class=" CE        act          " id="CE"     value="<=">
+
+                <input type="button" class=" point     act          " id="point"  value="." >
+
+            </div>
+
+    </section>
+
+   
+
+
+   
+    <div> <!--Dekor-->
+                        <!--TREE-->
+                    <div class="tree"> <img src="derevo.png" style="height: 96vh; width: 32vw;"> </div>
+
+            <div>  <!--leaves-->
+
+                    <div class="listva listva1" > <img src="list321.png"   style=" height: 6.7vh;  width: 3.5vw; "> </div>
+                    <div class="listva listva2" > <img src="list123.png"   style=" height: 8vh;    width: 4vw;   "> </div>
+                    <div class="listva listva3" > <img src="list123.png"   style=" height: 9vh;    width: 5vw;   "> </div>
+                    <div class="listva listva4" > <img src="list321.png"   style=" height: 8.5vh;  width: 4.1vw; "> </div>  
+                    <div class="listva listva5" > <img src="list123.png"   style=" height: 9.5vh;  width: 5vw;   "> </div>     
+                    <div class="listva listva6" > <img src="list321.png"   style=" height: 9vh;    width: 5vw;   "> </div>    
+                    <div class="listva listva7" > <img src="list321.png"   style=" height: 9vh;    width: 5vw;   "> </div>     
+                    <div class="listva listva8" > <img src="listnum1.png"  style=" height: 10vh;   width: 5vw;   "> </div>      
+                    <div class="listva listva9" > <img src="listwow.png"   style=" height: 10.5vh; width: 5vw;   "> </div>     
+                    <div class="listva listva10"> <img src="list321.png"   style=" height: 9vh;    width: 4.6vw; "> </div>      
+                    <div class="listva listva11"> <img src="list321.png"   style=" height: 8vh;    width: 4.4vw; "> </div>    
+                    <div class="listva listva12"> <img src="listnum1.png"  style=" height: 8vh;    width: 3.5vw; "> </div>    
+                    <div class="listva listva13"> <img src="list123.png"   style=" height: 8vh;    width: 4vw;   "> </div>    
+                    <div class="listva listva14"> <img src="list321.png"   style=" height: 9vh;    width: 4.5vw; "> </div>    
+            </div>
+
+                    
+
+            <div> <!-- cloud [- +] -->
+
+                    <img class="cloud_left"                       src="oblako.png"    style=" height: 24vh;   width: 21vw; ">
+                    <img class="tongue_left"  id="tongue_left"    src="tongue.png"    style=" height: 6vh;    width: 2.5vw;">
+
+            </div>
+
+            <div> <!-- cloud [: *] -->
+
+                    <img class="cloud_right"                      src="oblako_2.png"  style=" height: 44vh;   width: 25vw; ">
+                    <img class="tongue_right" id="tongue_right"   src="tongue.png"    style=" height: 6vh;    width: 2.5vw;">
+                    <img class="butterfly"                        src="butterfly.png" style=" height: 14.2vh; width: 6.2vw;">
+
+                    <div class="eye">
+
+                        <div  id="rectan_1"> </div>
+                        <div  id="rectan_2"> </div>
+
+                    </div>
+
+            </div>
+
+            <div> <!--other clouds-->
+
+                <img class="other_cloud"   src="oblako_2.png" style=" height: 20vh;   width: 11vw; " >
+                <img class="other_cloud_2" src="oblako_2.png" style=" height: 20vh;   width: 11vw; " >
+                <img class="other_cloud_3" src="oblako_2.png" style=" height: 20vh;   width: 11vw; " >
+                <img class="other_cloud_4" src="oblako_2.png" style=" height: 20vh;   width: 11vw; " >
+
+
+
+            </div>
+
+
+            
+            <div> <!--mountain-->
+                <img class="mountain"                            src="gora.png"             style=" height: 100vh;  width: 61vw;  " > 
+                <img class="rail"                                src="doroga.png"           style=" height: 1vh;    width: 10vw;  " >
+                <img class="WAGEN"         id="WAGEN"            src="telezhka.png"         style=" height: 4vh;    width: 2vw;   " >
+                <img class="emptyWAGEN"    id="emptyWAGEN"       src="telezhka_2.png"       style=" height: 4vh;    width: 2vw;   " >
+                <img class="WAGEN_gold"    id="WAGEN_gold"       src="telezhka_gold.png"    style=" height: 4vh;    width: 2vw;   " >
+                <img class="frontMountain"                       src="frontGora.png"        style=" height: 57.2vh; width: 16.3vw;" > 
+                <img class="antenna"                             src="antenna.png"          style=" height: 21.3vh; width: 4.1vw; " >
+                <img class="pomp"                                src="pomp.png"             style=" height: 11vh;   width: 4vw;   " >
+                <img class="cable"                               src="kabel.png"            style=" height: 35vh;   width: 7vw;   " >
+                <img class="mountain_top"                        src="gora_top.png"         style=" height: 52vh; width: 29.2vw;"   >
+            
+            </div>
+
+            <div> <!--dragon-->
+                <img class="dragon_hand_psevdo"        id="dragon_hand"       src="drak_hand.png" style=" height: 20vh;    width: auto;   " >
+                <img class="dragon_head_psevdo"        id="dragon_head"       src="drak.png"      style=" height: 23vh;    width: auto;   " >
+                <img class="dragon_hand_close_psevdo"  id="dragon_hand_close" src="drak_hand_close.png" style=" height: 19vh;    width: auto;   " >
+
+
+            </div>
+
+            <div> <!--sky and earth-->
+                <div class="earth_upper">  </div>
+                <div class="earth_middle"> </div>
+                <div class="earth_bottom"> </div>
+
+                <div class="sky_left_1">   </div>
+                <div class="sky_left_2">   </div>
+                <div class="sky_left_3">   </div>
+
+                <div class="sky_right_1">  </div>
+                <div class="sky_right_2">  </div>
+                <div class="sky_right_3">  </div>
+
+
+            </div>
+
+            <div> <!--plant-->
+                <img class="tumbleweed"                           id="tumbleweed"    src="perekat.png"     >
+                <img class="seed_psevdo"                          id="seed"          src="seed.png"        >
+                <img class="sprout_psevdo"                        id="sprout"        src="sprout.gif"      >
+                <img class="plant_psevdo"                         id="plant"         src="PLANT.gif"       >
+                <img class="plant_attack_psevdo"                  id="plant_attack"  src="plant_attack.gif">
+                <img class="plant_chew_psevdo"                    id="plant_chew"    src="plant_chuvk.gif" >
+                <img class="plant_gastro_psevdo"                  id="plant_gastro"  src="plant_gastro.gif">
+                
+
+
+            </div>
+
+            <div> <!--zombi-->
+
+                <img class="zombie_psevdo" id="zombie" src="ZONDRI.gif" >
+
+            </div>
+    </div>
+
+
+   <!--<div class="test"></div>--> 
+    <div class="test_1" id="test_1"></div>
+
+    <script src="JavaScript.js"></script>
+
+</body>
+
+</html>

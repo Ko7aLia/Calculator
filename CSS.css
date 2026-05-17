@@ -1,0 +1,1718 @@
+@font-face {
+    font-family: Pixel;
+    src: url("../Calculator/Fonts/LomoWebPixelLTStd-4.woff");
+}
+/*обычно fonts выносят в отдельный css файл, если их много, чтобы не засорять код*/
+
+
+
+
+html{
+
+    overflow: hidden; /*прячет полосу прокрутки даже если элменты выходят за пределы экрана*/
+}
+
+body {
+
+    position:relative;
+
+    padding: 0px;
+    margin: 0px;
+
+    background: rgb(246, 254, 255);
+
+    z-index:-5;
+    
+}
+
+#Input, #Input2, #Input3, #Input4 {
+
+    position:absolute;
+
+    font-family: 'Pixel';
+    font-size: 6vh;
+    text-align: center;
+
+    resize: none; /*может ли пользователь изменить размеры input поля*/
+    
+    border: none;
+
+    transform: skew(-30deg);
+
+    background:rgb(191, 233, 191);
+
+}
+
+#Input, #Input3{
+
+    top: 32%;
+    right: 22%;
+    
+    width: 16vw;
+
+}
+
+#Input3{
+
+    right: 5%;
+
+}
+
+#Input2 {
+
+    top: 35%;
+    right: 20.7%;
+
+    width: 1.5vw;
+
+    z-index: 1;
+
+}
+
+#Input4{
+
+    top: 53%;
+    right: 11%;
+
+    width: 32.5vw;
+
+}
+
+#Input:focus,#Input2:focus,#Input3:focus{
+
+    outline:none; /*выделение при фокусе*/
+}
+
+.result{
+
+    position: absolute;
+
+    font-family: 'Pixel';
+    font-size: 6vh;
+
+    top: 45%;
+    right: 16%;
+
+    height: 7vh;
+    width: 16.5vw;
+
+    border: none;
+
+    transform: skew(-30deg);
+
+    background: rgb(191, 233, 191);
+
+}
+
+.result:active{
+
+    font-size: 50px;
+
+}
+
+.pixel{
+
+    position: absolute;
+
+    height: 4.3vh;
+    width: 36vw;
+
+    box-shadow: 8px 8px;
+   
+    background: rgba(255, 0, 0, 0);
+    
+    z-index: -1;
+
+}
+
+.pixel_1{
+    
+    top: 32%;
+    right: 1.7%;
+
+    box-shadow: 8px 8px, 8px -4px;
+
+    background: rgba(191, 233, 191);
+
+}
+
+.pixel_2{
+
+    top: 36.3%;
+    right: 3.6%;
+
+    background: rgb(191, 233, 191);
+
+}
+
+.pixel_3{
+
+    top: 40.6%;
+    right: 5.5%;
+
+    background: rgb(191, 233, 191);
+
+}
+
+.pixel_4{
+
+    top: 44.9%;
+    right: 14%;
+
+    width:19vw;
+
+    background: rgb(191, 233, 191);
+
+}
+
+.pixel_5{
+
+    top: 49%;
+    right: 15.7%;
+
+    width: 19vw;
+
+    background: rgb(191, 233, 191);
+
+}
+
+.pixel_6{
+
+    top: 53%;
+    right: 7.4%;
+
+    box-shadow: 8px 8px, 8px -4px;
+
+    background: rgb(191, 233, 191);
+
+}
+
+.pixel_7{
+
+    top: 57.3%;
+    right: 9.3%;
+
+    background: rgb(191, 233, 191);
+
+}
+
+.pixel_8{
+
+    top: 61.6%;
+    right: 11.2%;
+
+    background: rgb(191, 233, 191);
+
+}
+
+.image_pos_anim{
+
+    position:absolute;
+
+    transition: transform 0.9s ease-out;
+
+}
+
+.number{
+    
+    position: absolute;
+
+    font-family: 'Pixel';
+    text-align: center;
+
+    border: none;
+
+    cursor: pointer;
+
+    transition: transform 0.9s ease-out;
+
+    background: none;
+
+}
+
+.number1, .number2, .number3, .number4, .number5, .number6, .number7, .number8, .number9 {
+
+    font-size: 35px;
+
+    color: rgb(255, 0, 0);
+
+}
+
+.image1_of_button{
+
+    top: 7.5%;
+    left: 4.5%;
+
+}
+
+.number1{
+
+    height: 9.5vh; /* высота и ширина здесь делает цифру посередине*/
+    width: 4.5vw;
+
+   /* margin-left:auto;
+    margin-right:auto; */
+
+}
+
+.image3_of_button{
+
+    top: 18%;
+    left: 21.5%;
+
+}
+
+.number3{
+
+    height: 13vh; 
+    width: 6vw;
+
+}
+
+.image5_of_button{
+
+    top: 21%;
+    left: 10.5%;
+
+}
+
+.number5{
+
+    height: 17vh;
+    width: 8vw;
+
+}
+
+.image7_of_button{
+
+    top: 36%;
+    left: 1.5%;
+
+}
+
+.number7{
+
+    height: 10vh;
+    width: 4.8vw;
+
+}
+
+.image9_of_button{
+
+    top: 42%;
+    left: 21.5%;
+
+}
+
+.number9{
+
+    height: 12vh;
+    width: 5.5vw;
+
+}
+
+.number1:active, .number2:active, .number3:active, .number4:active, .number5:active, .number6:active, .number7:active, .number8:active, .number9:active{
+
+    font-size: 27px;
+
+}
+
+.image2_of_button{
+
+    top: 6%;
+    left: 13%;
+
+}
+
+.number2{
+ 
+    height: 12.5vh;
+    width: 6vw;
+
+}
+
+.image4_of_button{
+
+    top: 23%;
+    left: 5%;
+
+}
+
+.number4{
+    
+    height: 12vh;
+    width: 5.3vw;
+
+}
+
+.image6_of_button{
+
+    top: 28%;
+    left: 23.5%;
+
+}
+
+.number6{
+
+    height: 12vh;
+    width: 5.3vw;
+
+}
+
+.image8_of_button{
+
+    top: 40%;
+    left: 9.3%;
+
+}
+
+.number8{
+
+    height: 14vh;
+    width: 6.5vw;
+
+}
+
+.image0_of_button{
+
+    position: absolute;
+
+    top: 61%;
+    left: 13.7%;
+
+}
+
+.number0{
+
+    font-family: 'Pixel';
+    font-size: 4vw;
+    text-align: center;
+    
+    height: 14vh;
+    width: 5.5vw;
+
+    color: rgb(255, 255, 255);
+
+    border: none;
+
+    cursor: pointer;
+
+}
+
+.number0:active{
+
+    font-size: 35px;
+
+}
+
+.listva {
+
+    transition: transform 0.9s ease-out;
+
+}
+
+.listva1{
+    
+    position: absolute;
+
+    top: 10%;
+    left: 2.5%;
+
+    border-radius: 50%;
+
+    z-index: -2;
+
+}
+
+.listva img{
+
+    filter: brightness(80%);
+
+}
+
+.listva2{
+
+    position: absolute;
+
+    top: 11%;
+    left: 7%;
+
+    border-radius: 50%;
+
+    z-index: -2;
+
+}
+
+.listva3{
+    
+    position: absolute;
+
+    top: 12%;
+    left: 16%;
+
+    border-radius: 50%;
+
+    z-index: -2;
+
+}
+
+.listva4{
+
+    position: absolute;
+
+    top: 13%;
+    left: 13%;
+
+    border-radius: 50%;
+
+    z-index: -2;
+
+}
+
+.listva5{
+
+    position: absolute;
+
+    top: 21%;
+    left: 25.5%;
+
+    border-radius: 50%;
+
+    z-index: -2;
+
+}
+
+.listva6{
+
+    position: absolute;
+
+    top: 21%;
+    left: 9%;
+
+    border-radius: 50%;
+
+    z-index: -2;
+
+}
+
+.listva7{
+
+    position: absolute;
+
+    top: 30%;
+    left: 7.5%;
+
+    border-radius: 50%;
+
+    filter: brightness(100%);
+
+    z-index: -2;
+
+}
+
+.listva8{
+    
+    position: absolute;
+
+    top: 35%;
+    left: 9%;
+
+    border-radius: 50%;
+
+    z-index: -2;
+
+}
+
+.listva9{
+
+    position: absolute;
+
+    top: 35.5%;
+    left: 14%;
+
+    border-radius: 50%;
+
+    z-index: -1;
+
+}
+
+.listva5 img, .listva9 img, .listva10 img, .listva11 img, .listva12 img, .listva13 img, .listva14 img{
+
+    filter: none;
+
+}
+
+.listva10{
+
+    position: absolute;
+
+    top: 45%;
+    left: 15%;
+
+    border-radius: 50%;
+
+    z-index: -2;
+
+}
+
+.listva11{
+
+    position: absolute;
+
+    top: 50%;
+    left: 20%;
+
+    border-radius: 50%;
+
+    z-index: -2;
+
+}
+
+.tree{
+
+    position: absolute;
+
+    top: 4%;
+    left: 0%;
+
+    z-index: -3;
+
+}
+
+.listva12{
+    
+    position: absolute;
+
+    top: 42%;
+    left: 4%;
+
+    border-radius: 50%;
+
+    z-index: -1;
+
+}
+
+.listva13{
+
+    position: absolute;
+
+    top: 70%;
+    left: 23%;
+
+    border-radius: 50%;
+
+    z-index: -1;
+}
+
+.listva14{
+
+    position: absolute;
+
+    top: 68%;
+    left: 4%;
+
+    border-radius: 50%;
+
+    z-index: -1;
+
+}
+
+.inner-circle {
+
+    position: absolute;
+    
+    top: 50%;
+    left: 50%;
+    
+    height: 100px;
+    width: 100px;
+    
+    border-radius: 50%;
+    
+    transform: translate(-50%, -50%);
+
+    transition: transform 0.1s ease-out;
+
+    background: #007bff;
+
+}
+
+.cloud_left{
+
+    position: absolute;
+
+    left: 27%;
+
+    /* margin-left:-160px;  позволяет ставить элемент посередине, значение пишется в половину ширины элемента*/
+
+}
+
+.cloud_right{
+
+    position:absolute;
+
+    left: 37%;
+    
+    z-index: -1;
+
+}
+
+.act{
+
+    position: absolute;
+
+    font-family: 'Pixel';
+    font-size: 2.5vw;
+
+    border: none;
+
+    background: none;
+
+    z-index: 1;
+
+}
+
+.operator{
+
+    font-size: 6vw;
+
+}
+
+.tongue_left{
+
+    position: absolute;
+
+    top: 16%;
+    left: 33%;
+
+    z-index:-1;
+
+}
+
+.tongue_leftANIM{
+
+    animation: CLEARdropletPNG 1s ease-in forwards;
+
+}
+
+.test_1{
+
+    position:absolute;
+
+    top: 70%;
+    left: 28%;
+
+    height: 15%;
+    width: 14%;
+
+}
+
+.clear{
+
+    top: 16.8%;
+    left: 33%;
+
+}
+
+
+.CLEARANIM{
+
+    animation: CLEARdroplet 1s ease-in forwards;
+
+}
+
+@keyframes CLEARdropletPNG { /*droplet - капелька*/
+
+    0%{top: 16.8%; left: 33%;opacity: 1;}
+    30%{top:85%;left: 33%;opacity: 0;}
+    35%{top: 14.8%; left: 33%;opacity: 0;}
+    100%{top: 15.8%; left: 33%;opacity: 1;}
+    
+}
+
+@keyframes CLEARdroplet { /*droplet - капелька*/
+
+    0%{top: 16.8%; left: 33%;opacity: 1;}
+    30%{top:85%;left: 33%;opacity: 0;}
+    35%{top: 14.8%; left: 33%;opacity: 0;}
+    100%{top: 16.8%; left: 33%;opacity: 1;}
+    
+}
+
+.tongue_right{
+
+    position: absolute;
+
+    top: 36.4%;
+    left: 42.8%;
+
+    z-index:-2;
+    
+}
+
+.tongue_rightANIM{
+
+    animation: CEdropletPNG 1s ease-in forwards;
+
+}
+
+@keyframes CEdropletPNG { /*droplet - капелька*/
+
+    0%{top: 36.4%; left: 42.8%;opacity: 1;}
+    30%{top:100%;left: 42.8%;opacity: 0;}
+    35%{top: 34.5%; left: 42.8%;opacity: 0;}
+    100%{top: 36.4%; left: 42.8%;opacity: 1;}
+    
+}
+
+@keyframes CEdroplet { /*droplet - капелька*/
+
+    0%{top: 37.3%; left: 42.4%;opacity: 1;}
+    30%{top:100%;left: 42.4%;opacity: 0;}
+    35%{top: 34.2%; left: 42.4%;opacity: 0;}
+    100%{top: 37.3%; left: 42.4%;opacity: 1;}
+    
+}
+
+.CE{
+
+    top: 37.3%;
+    left: 42.4%;
+
+}
+
+.CEANIM{
+
+    animation: CEdroplet 1s ease-in forwards;
+
+}
+
+.plus{
+    
+    left: 36.6%;
+
+}
+
+.minus{
+
+    left:30%;
+
+}
+
+.divide{
+
+    top: 20%;
+    left: 40.2%;
+    
+}
+
+.multiply{
+
+    top: 23%;
+    left: 46.4%;
+    
+}
+
+.point{
+
+    top: 6%;
+    left: 56.2%;
+
+}
+
+.pointALT {
+
+    position: absolute;
+
+    font-family: 'Pixel';
+    font-size: 2.5vw;
+
+    top: 6%;
+    left: 56.2%;
+
+    border: none;
+
+    background: none;
+
+    z-index: -5;
+
+    animation: pointALT1 5s ease-in forwards;
+    
+}
+
+@keyframes pointALT1 {
+    25%{left: 56.2%; top: 6%;}
+    50%{left: 55.5%; top: 4.5%;}
+    75%{left: 56.5%; top: 7.5%;}
+    100%{left: 56.2%; top: 6%;}
+}
+
+.mountain{
+
+    position: absolute;
+
+    right: 0%;
+    bottom: 0%;
+
+    z-index: -6;
+
+}
+
+.WAGEN{
+
+    position: absolute;
+
+    visibility: visible;
+    
+    right: 22%;
+    bottom: 10.4%;
+
+    height: auto;    
+    width: auto;
+
+    z-index: -6;
+
+}
+
+.psevdo_WAGEN{
+
+    visibility: hidden;
+
+    height: 0vh;    
+    width: 0vw;
+
+}
+    
+.WAGEN_from_LEFT_to_RIGHT{
+
+    visibility: visible;
+
+    height: auto;    
+    width: auto;
+
+    animation: WAGEN_from_LEFT_to_RIGHT 4s ease forwards;
+
+}
+
+.emptyWAGEN{
+
+    position: absolute;
+    
+    right: 0%;
+    bottom: 10.4%;
+
+    z-index: -1;
+
+}
+
+.WAGEN_from_RIGHT_to_LEFT{
+
+    visibility: visible;
+
+    height: auto;    
+    width: auto;
+
+    animation: WAGEN_from_RIGHT_to_LEFT 15s ease forwards;
+
+}
+
+.WAGEN_gold{
+
+    position: absolute;
+    
+    right: 0%;
+    bottom: 10.4%;
+
+    z-index: -6;
+
+}
+
+
+@keyframes WAGEN_from_LEFT_to_RIGHT{
+    from{right:22%;}
+    to{right:0%;}
+    
+}
+
+@keyframes WAGEN_from_RIGHT_to_LEFT{
+    from{right:0%;}
+    to{right:22%;}
+
+}
+.rail{
+
+    position: absolute;
+
+    right: 14.5%;
+    bottom: 9.7%;
+
+    z-index: 0;
+}
+
+.frontMountain{
+
+    position: absolute;
+
+    right: 0%;
+    bottom: 0%;
+
+    z-index: 0;
+
+}
+
+.mountain_top{
+
+    position:absolute;
+
+    right: 0%;
+    bottom: 14.1%;
+
+    z-index: -3;
+}
+
+.antenna{
+
+    position: absolute;
+
+    top: 10.1%;
+    right: 10%;
+    
+}
+
+.pomp{
+
+    position: absolute;
+
+    top: 22%;
+    right: 28%;
+    
+    z-index: -1;
+
+}
+
+.cable{
+
+    position: absolute;
+
+    top: 35%;
+    right: 2%;
+
+    z-index: -2;
+
+}
+
+.butterfly{
+
+    position: absolute;
+
+    top: 3%;
+    right: 40%;
+
+}
+
+.rectan_1{
+
+    position: absolute;
+
+    top: 7.5%;
+    right: 40.5%;
+
+
+    height: 0vh;
+    width: 4vw;
+
+    rotate: 45deg;
+
+    background: grey;
+
+    z-index: -2;
+
+    animation: blinking_1 ease-in 0.5s 2 alternate;
+
+}
+
+@keyframes blinking_1{
+    from{height: 0vh;}
+    to{height: 3.5vh;}
+}
+
+.rectan_2{
+
+    position: absolute;
+
+    top: 15%;
+    right: 42%;
+
+    height: 0vh;
+    width: 4vw;
+
+    rotate: 45deg;
+
+    background: grey;
+
+    z-index: -2;
+
+    animation: blinking_2 ease-in 0.5s 2 alternate;
+
+}
+
+@keyframes blinking_2{
+    from{top: 13.8%; height: 0vh;}
+    to{top: 10%; height: 3vh;}
+}
+
+.earth_upper{
+
+    position:absolute;
+
+    left: 0%;
+    bottom: 9.5%;
+    
+    height: 8vh;
+    width: 45vw;
+
+    box-shadow: -5px -3px 10px rgb(216, 176, 14);
+
+    background: rgb(255, 207, 17);
+
+    z-index: -9;
+
+}
+
+.earth_middle{
+    
+    position:absolute;
+
+    left: 0%;
+    bottom: 5.5%;
+    
+    height: 8vh;
+    width: 45vw;
+
+    box-shadow: -5px -5px 10px rgb(216, 176, 14);
+
+    background: rgb(255, 207, 17);
+
+    z-index: -8;
+
+}
+
+.earth_bottom{
+
+    position:absolute;
+
+    left: 0%;
+    bottom: 0%;
+    
+    height: 8vh;
+    width: 45vw;
+
+    box-shadow: -5px -7px 10px rgb(216, 176, 14);
+
+    background: rgb(255, 207, 17);
+
+    z-index: -7;
+
+}
+
+.sky_left_1 {
+
+    position:absolute;
+
+    top: 0%;
+    left: 0%;
+    
+    height: 9vh;
+    width: 45vw;
+
+    box-shadow: -5px 7px 10px grey,
+                2px 5px 10px rgb(249, 255, 255) inset;
+
+    background: rgb(173, 255, 230);
+
+    z-index: -4;
+
+}
+
+.sky_left_2 {
+
+    position:absolute;
+
+    top: 8%;
+    left: 0%;
+    
+    height: 8vh;
+    width: 45vw;
+
+    box-shadow: -5px 4px 10px rgb(156, 156, 156);
+
+    background: rgb(208, 255, 241);
+
+    z-index: -5;
+
+}
+
+.sky_left_3 {
+
+    position:absolute;
+
+    top: 13%;
+    left: 0%;
+    
+    height: 8vh;
+    width: 45vw;
+
+    box-shadow: -5px 2px 10px rgb(185, 185, 185);
+
+    background: rgb(236, 255, 249);
+
+    z-index: -6;
+
+}
+
+.sky_right_1{
+
+    position:absolute;
+
+    top: 0%;
+    right: 0%;
+    
+    height: 9vh;
+    width: 41.3vw;
+
+    box-shadow: 5px 7px 10px grey,
+                -2px 5px 10px rgb(249, 255, 255) inset;
+
+    background: rgb(173, 255, 230);
+
+    z-index: -4;
+
+
+}
+
+.sky_right_2 {
+
+    position: absolute;
+
+    top: 8%;
+    right: 0%;
+    
+    height: 8vh;
+    width: 41.3vw;
+
+    box-shadow: -5px 4px 10px rgb(156, 156, 156);
+
+    background: rgb(208, 255, 241);
+
+    z-index: -7;
+
+}
+
+.sky_right_3 {
+
+    position:absolute;
+
+    top: 13%;
+    right: 0%;
+    
+    height: 8vh;
+    width: 45vw;
+
+    box-shadow: -5px 2px 10px rgb(185, 185, 185);
+
+    background: rgb(236, 255, 249);
+
+    z-index: -8;
+
+}
+
+.tumbleweed{
+
+    position:absolute;
+
+    top:70%;
+    left:-8%;
+
+    opacity:0;
+
+    height: auto;
+    width: 7vw;
+
+    z-index: -7;
+
+}
+
+.tumbleweedANIM{
+
+    animation: animTumbleweed 4s linear forwards;
+
+}
+
+@keyframes animTumbleweed {
+
+    1%  {top:70%; left:-4%; opacity:1;}
+    3%  {top:70%; left:-2%;}
+    6%  {top:69%; left:0%;}
+    9%  {top:68%; left:2%;}
+    12%  {top:67%; left:4%;}
+    15%  {top:67%; left:6%;}
+    18%  {top:67%; left:8%;}
+    20%  {top:67%; left:10%;}
+    21%  {top:67%; left:12%;}
+    24%  {top:68%; left:14%;}
+    27%  {top:69%; left:16%;}
+    30%  {top:70%; left:18%;}
+    33%  {top:69%; left:20%;}
+    36%  {top:68%; left:22%;}
+    39%  {top:67%; left:24%;}
+    42%  {top:67%; left:26%;}
+    45%  {top:67%; left:28%;}
+    48%  {top:67%; left:30%;}
+    51%  {top:68%; left:32%;}
+    54%  {top:69%; left:34%;}
+    57%  {top:70%; left:36%;}
+    60%  {top:69%; left:38%;}
+    63%  {top:68%; left:40%;}
+    66%  {top:67%; left:42%;}
+    69%  {top:67%; left:44%;}
+    72%  {top:67%; left:46%;}
+    75%  {top:67%; left:48%;}
+    78%  {top:68%; left:50%;}
+    81%  {top:69%; left:52%;}
+    84%  {top:70%; left:54%;}
+    87%  {top:69%; left:56%;}
+    90%  {top:68%; left:56%;}
+    93%  {top:67%; left:56%;}
+    96%  {top:67%; left:56%;}
+    99%  {top:67%; left:56%;}
+    100% {top:70%; left:56%;rotate: 360deg;opacity:1;}
+
+}
+
+.seed_psevdo{
+
+    visibility: hidden;
+
+    height: 0vh;    
+    width: 0vw;
+
+}
+
+.seed{
+
+    position: absolute;
+    
+    visibility: visible;
+
+    top: 73%;
+    left: 33%;
+
+    height: 6vh;    
+    width: 2.5vw;
+
+    opacity: 0;
+
+    animation: seedANIM 0.7s linear forwards;
+
+}
+
+.seed_Invs{
+
+    top: 79%;
+    left: 32%;
+
+    animation: seedInvisible 1s linear forwards;
+
+}
+
+@keyframes seedANIM {
+
+    20%{top:73%; left:33%;}
+    40%{top:71%; left:33%;opacity: 1;}
+    60%{top:70%; left:32.5%;}
+    80%{top:75%; left:32%;}
+    100%{top:79%; left:32%;opacity: 1;}
+
+}
+
+@keyframes seedInvisible {
+
+    from{opacity: 1;}
+    to{top:81%; opacity: 0;}
+
+}
+
+.sprout_psevdo{
+
+    visibility: hidden;
+
+    height: 0vh;    
+    width: 0vw;
+
+}
+
+.sprout {
+
+    position: absolute;
+    
+    visibility: visible;
+
+    top: 78%;
+    left: 32%;
+
+    height: 7vh;    
+    width: 3vw;
+
+    opacity: 0;
+
+    animation: sproutVisible 1s linear forwards;
+    
+}
+
+@keyframes sproutVisible {
+
+    from{opacity:0;}
+    to{top:77%; opacity:1;}
+    
+}
+
+.sprout_Invs {
+
+    animation: sproutInvisible 1s linear forwards;
+
+}
+
+@keyframes sproutInvisible {
+
+    from{opacity:1;}
+    to{top:78%; opacity:0;}
+    
+}
+
+.other_cloud{
+
+    position: absolute;
+
+    right:14%;
+
+    z-index:-4;
+}
+
+.other_cloud_2{
+
+    position: absolute;
+
+    top:9%;
+    right:28%;
+
+    z-index:-8;
+
+}
+
+.other_cloud_3 {
+
+    position: absolute;
+
+    top:-1%;
+    left:14%;
+
+    transform: scaleX(-1);
+
+    z-index: -4;
+}
+
+.other_cloud_4 {
+
+    position: absolute;
+
+    top: 9%;
+    left: -5%;
+
+    transform: scaleX(-1);
+
+    z-index: -6;
+}
+
+.plant_psevdo{
+
+    visibility: hidden;
+
+    height: 0vh;    
+    width: 0vw;
+
+}
+
+.plant{
+
+    position: absolute;
+
+    visibility: visible;
+
+    top: 56%;
+    left: 29%;
+
+    height: 30vh;   
+    width: 13vw;
+
+    opacity: 0;
+
+    animation: plantVisible 2s linear forwards;
+}
+
+.plant_endless{
+
+    position: absolute;
+
+    visibility: visible;
+
+    top: 56%;
+    left: 29%;
+
+    height: 30vh;   
+    width: 13vw;
+
+}
+@keyframes plantVisible {
+
+    from {top: 70%; left: 31%; height: 15vh; width: 5vw;  opacity: 0;}
+    to   {top: 56%; left: 29%; height: 30vh; width: 13vw; opacity: 1;}
+    
+}
+
+.plant_attack_psevdo{
+
+    visibility: hidden;
+
+    height: 0vh;    
+    width: 0vw;
+
+}
+
+.plant_attack{
+
+    position: absolute;
+
+    visibility: visible;
+
+    top: 56%;
+    left: 28.7%;
+
+    height: 30vh;   
+    width: 13vw;
+
+}
+
+.plant_chew_psevdo{
+
+    visibility: hidden;
+
+    height: 0vh;    
+    width: 0vw;
+
+}
+
+.plant_chew{
+
+    position: absolute;
+
+    visibility: visible;
+
+    top: 56%;
+    left: 29%;
+
+    height: 30vh;   
+    width: 13vw;
+
+}
+
+.plant_gastro_psevdo{
+
+    visibility: hidden;
+
+    height: 0vh;    
+    width: 0vw;
+
+}
+
+.plant_gastro{
+
+    position: absolute;
+
+    visibility: visible;
+
+    top: 56%;
+    left: 29%;
+
+    height: 30vh;   
+    width: 13vw;
+}
+
+.zombie_psevdo{
+
+    visibility: hidden;
+
+    height: 0vh;    
+    width: 0vw;
+
+}
+
+.zombie{
+
+    position: absolute;
+
+    visibility: visible;
+
+    top: 51%;
+    left: 60%;
+
+    height: 35vh;
+    width: 15vw;
+
+    animation: zombie_move 15s linear forwards;
+
+    z-index: -7;
+
+}
+
+@keyframes zombie_move{
+
+    from{top: 51%; left: 60%;}
+    to{left: 33%;}
+
+}
+
+.dragon_head_psevdo{
+
+    visibility: hidden;
+
+    height: 0vh;    
+    width: 0vw;
+
+}
+.dragon_head{
+
+    position: absolute;
+
+    visibility: visible;
+
+    right: -7%;
+    bottom: 10%;
+
+    z-index: -5;
+
+    animation: dragons_head_appears 12s ease-in-out 1 alternate;
+
+}
+
+@keyframes dragons_head_appears{
+
+    1%{right: -7%; bottom: 10%;}
+    30%{right: 0%; bottom: 25%;}
+    80%{right: 0%; bottom: 25%;}
+    
+}
+
+.dragon_hand_psevdo{
+
+    visibility: hidden;
+
+    height: 0vh;    
+    width: 0vw;
+
+}
+
+.dragon_hand{
+
+    position: absolute;
+
+    visibility: visible;
+
+    right: 13%;
+    bottom: 30%;
+
+    z-index: -5;
+
+    animation: drag_handing_down 3s ease-in-out ;
+
+}
+
+@keyframes drag_handing_down{
+
+    from{right: 13%; bottom: 30%;}
+    to{right: 19%; bottom: 8.5%;}
+
+}
+
+.dragon_hand_close_psevdo{
+
+    visibility: hidden;
+
+    height: 0vh;    
+    width: 0vw;
+
+}
+
+.dragon_hand_close {
+
+    position: absolute;
+
+    visibility: visible;
+
+    right: 19%;
+    bottom: 10%;
+
+    z-index: -5;
+
+}
+
+.dragon_hand_close_anim{
+
+    animation: drag_handing_up 3s ease-in-out forwards;
+
+}
+
+@keyframes drag_handing_up {
+
+    from{right: 19%; bottom: 10%;}
+    to{right: 13.5%; bottom: 30%;}
+
+}
+
+.dragon_handing_wagen_up{
+
+    animation: dragon_handing_wagen 3s ease-in-out forwards;
+
+}
+
+@keyframes dragon_handing_wagen{
+
+    from{right: 22%; bottom: 10.4%;}
+    to{right: 16.3%; bottom: 30%;}
+
+}
+
+
+/*.test{
+
+    position:absolute;
+
+    left:341px;
+    top:104px;
+
+    height:10px;
+    width:10px;
+
+    border-radius: 50px;
+
+    background: red;
+
+
+}*/
+/*@keyframes animTumbleweed {
+
+    25%{translate:0% 0%;}
+    50%{translate:200% 0%;}
+    75%{translate:400% 0%;}
+    100%{translate:600% 0%;}
+}*/
+
